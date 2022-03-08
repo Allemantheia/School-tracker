@@ -3,11 +3,19 @@ using System.Collections.Generic;
 
 namespace School_grade_tracker_v2
 {
-    internal class Program
+    enum School
     {
+        WC = 0,
+        UCW = 1,
+        UWE = 2,
+    }
+    class Program
+    {
+        static List<Student> students = new List<Student>();
         static void Main(string[] args)
         {
             var students = new List<Student>();
+
             var adding = true;
 
             while (adding)
@@ -19,13 +27,15 @@ namespace School_grade_tracker_v2
 
                     newStudent.Name = Util.Console.Ask("Student Name: ");
 
-                    newStudent.Grade = int.Parse(Util.Console.Ask("Student Grade: "));
+                    newStudent.Grade = Util.Console.AskInt("Student Grade: ");
+
+                    newStudent.School = (School) Util.Console.AskInt("Student School (type the corresponding number): \n 0: WC \n 1: UCW \n 2: UWE \n)");
 
                     newStudent.Birthday = Util.Console.Ask("Student Birthday: ");
 
                     newStudent.Address = Util.Console.Ask("Student Address: ");
 
-                    newStudent.Phone = int.Parse(Util.Console.Ask("Student PhoneNumber : "));
+                    newStudent.Phone = Util.Console.AskInt("Student PhoneNumber : ");
 
                     students.Add(newStudent);
                     Student.Count++;
@@ -37,9 +47,9 @@ namespace School_grade_tracker_v2
                         adding = false;
                 }
 
-                catch (FormatException)
+                catch (FormatException msg)
                 {
-                    Console.WriteLine("Input was not a number");
+                    Console.WriteLine(msg.Message);
                 }
                 catch (Exception)
                 {
@@ -54,12 +64,34 @@ namespace School_grade_tracker_v2
                 Console.WriteLine("Name: {0}, Grade: {1}  ", student.Name, student.Grade);
             }
 
+            Exports();
         }
 
         static void Import()
         {
             var importedStudent = new Student("Jenny", 86, "birthday", "address", 123456);
             Console.WriteLine(importedStudent.Name);
+        }
+
+        static void Exports()
+        {
+            foreach (var Student in students)
+            {
+                switch(Student.School)
+                {
+                    case School.WC:
+                        Console.WriteLine("Exporting to Weston College");
+                        break;
+                        
+                    case School.UCW:
+                        Console.WriteLine("Exporting to UCW");
+                        break;
+                    
+                    case School.UWE:
+                        Console.WriteLine("Exporting to UWE");
+                        break;
+                }
+            }
         }
     }
     class Member
@@ -81,6 +113,7 @@ namespace School_grade_tracker_v2
 
         public int Grade;
         public string Birthday;
+        public School School;
 
 
         public Student()
