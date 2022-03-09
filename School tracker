@@ -14,7 +14,7 @@ namespace School_grade_tracker_v2
         static List<Student> students = new List<Student>();
         static void Main(string[] args)
         {
-            var students = new List<Student>();
+            //var students = new List<Student>();
 
             var adding = true;
 
@@ -29,7 +29,7 @@ namespace School_grade_tracker_v2
 
                     newStudent.Grade = Util.Console.AskInt("Student Grade: ");
 
-                    newStudent.School = (School) Util.Console.AskInt("Student School (type the corresponding number): \n 0: WC \n 1: UCW \n 2: UWE \n)");
+                    newStudent.School = (School)Util.Console.AskInt("Student School (type the corresponding number): \n 0: WC \n 1: UCW \n 2: UWE \n)");
 
                     newStudent.Birthday = Util.Console.Ask("Student Birthday: ");
 
@@ -57,7 +57,7 @@ namespace School_grade_tracker_v2
                     Console.WriteLine("Error adding student, please try again");
                 }
 
-                
+
             }
             foreach (var student in students)
             {
@@ -75,18 +75,20 @@ namespace School_grade_tracker_v2
 
         static void Exports()
         {
-            foreach (var Student in students)
+            //Console.WriteLine(students.Count);
+            foreach (var student in students)
             {
-                switch(Student.School)
+                //Console.WriteLine(student.School);
+                switch (student.School)
                 {
                     case School.WC:
                         Console.WriteLine("Exporting to Weston College");
                         break;
-                        
+
                     case School.UCW:
                         Console.WriteLine("Exporting to UCW");
                         break;
-                    
+
                     case School.UWE:
                         Console.WriteLine("Exporting to UWE");
                         break;
@@ -129,7 +131,7 @@ namespace School_grade_tracker_v2
             Address = address;
             Phone = phone;
 
-        }       
+        }
 
     }
 
