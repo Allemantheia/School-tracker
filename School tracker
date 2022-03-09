@@ -35,7 +35,7 @@ namespace School_grade_tracker_v2
 
                     newStudent.Address = Util.Console.Ask("Student Address: ");
 
-                    newStudent.Phone = Util.Console.AskInt("Student PhoneNumber : ");
+                    newStudent.Phone = Util.Console.AskLong("Student PhoneNumber : ");
 
                     students.Add(newStudent);
                     Student.Count++;
@@ -100,9 +100,9 @@ namespace School_grade_tracker_v2
     {
         public string Name;
         public string Address;
-        protected int phone;
+        protected long phone;
 
-        public int Phone
+        public long Phone
         {
             set { phone = value; }
         }
