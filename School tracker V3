@@ -1,0 +1,120 @@
+using System;
+using System.Collections.Generic;
+
+namespace School_grade_tracker_v2
+{
+    enum teacherorstudent
+    {
+        Teacher = 0,
+        Student = 1,
+    }
+    enum School
+    {
+        WC = 0,
+        UCW = 1,
+        UWE = 2,
+    }
+    class Program
+    {
+        static List<Student> students = new List<Student>();
+        static void Main(string[] args)
+        {
+            NewStudentFunction();
+        }
+        static void NewStudentFunction()
+        {
+
+            var adding = true;
+
+            while (adding)
+            {
+                try
+                {
+                    var newStudent = new Student();
+
+                    newStudent.TeacherorStudent = (teacherorstudent)Util.Console.AskInt("Teacher or student (type the corresponding number): \n 0:Teacher \n 1:Student \n");
+
+                    newStudent.Name = Util.Console.Ask("Student Name: ");
+
+                    newStudent.Grade = Util.Console.AskInt("Student Grade: ");
+
+                    newStudent.School = (School)Util.Console.AskInt("Student School (type the corresponding number): \n 0: WC \n 1: UCW \n 2: UWE \n)");
+
+                    newStudent.Birthday = Util.Console.Ask("Student Birthday: ");
+
+                    newStudent.Address = Util.Console.Ask("Student Address: ");
+
+                    newStudent.Phone = Util.Console.AskLong("Student PhoneNumber : ");
+
+                    students.Add(newStudent);
+                    
+                    Console.WriteLine("Student Count: {0}",Student.Count);
+
+                    Console.WriteLine("Add Another? y/n");
+
+                    if (Console.ReadLine() != "y")
+                        adding = false;
+                }
+
+                catch (FormatException msg)
+                {
+                    Console.WriteLine(msg.Message);
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Error adding student, please try again");
+                }
+
+
+            }
+            Console.WriteLine();
+
+            //Exports();
+        }
+    }
+    class Member
+    {
+        public teacherorstudent TeacherorStudent;
+        public string Name;
+        public string Address;
+        protected long phone;
+
+        public long Phone
+        {
+            set { phone = value; }
+        }
+    }
+
+     class Student : Member
+    {
+        public static int Count = 0;
+
+
+        public int Grade;
+        public string Birthday;
+        public School School;
+
+
+        public Student()
+        {
+            Count++;
+        }
+
+        public Student(string name, int grade, string birthday, string address, int phone)
+        {
+            Name = name;
+            Grade = grade;
+            Birthday = birthday;
+            Address = address;
+            Phone = phone;
+            Count++;
+        }
+
+    }
+
+    class Teacher : Member
+    {
+        public string Subject;
+    }
+}
