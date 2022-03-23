@@ -21,7 +21,7 @@ namespace School_grade_tracker_v2
         Science = 2,
         ICT = 3,
         Art = 4,
-        Humanities = 5,
+        Languages = 5,
 
     }
     class Program
@@ -51,7 +51,6 @@ namespace School_grade_tracker_v2
 
         static void NewTeacherFunction()
         {
-
             var adding = true;
 
             while (adding)
@@ -63,7 +62,7 @@ namespace School_grade_tracker_v2
 
                     newTeacher.Name = Util.Console.Ask("Teacher Name: ");
 
-                    newTeacher.Subject = (iSubject)Util.Console.AskInt("Teacher Subject (type the corresponding number): \n 0: Maths \n 1: English \n 2: Science \n 3: ICT \n 4: Art \n 5: Humanities \n ");
+                    newTeacher.Subject = (iSubject)Util.Console.AskInt("Teacher Subject (type the corresponding number): \n 0: Maths \n 1: English \n 2: Science \n 3: ICT \n 4: Art \n 5: Languages \n ");
 
                     newTeacher.School = (School)Util.Console.AskInt("Teacher School (type the corresponding number): \n 0: WC \n 1: UCW \n 2: UWE \n)");
 
@@ -99,7 +98,6 @@ namespace School_grade_tracker_v2
 
         static void NewStudentFunction()
         {
-
             var adding = true;
 
             while (adding)
@@ -210,8 +208,8 @@ namespace School_grade_tracker_v2
                         Console.WriteLine("Registered as Art teacher");
                         break;
 
-                    case iSubject.Humanities:
-                        Console.WriteLine("Registered as Humanities teacher");
+                    case iSubject.Languages:
+                        Console.WriteLine("Registered as Languages teacher");
                         break;
                 }
             }
