@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Allemantheia\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Allemantheia\\.nuget\\packages"
+    ]
+  }
+}
